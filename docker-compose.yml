@@ -9,6 +9,7 @@ services:
     volumes:
       - ./config:/config
     ports:
+      - "5000:5000"
       # Port of the WireGuard VPN server
       - "51820:51820/udp"
     restart: unless-stopped
@@ -19,8 +20,6 @@ services:
     container_name: wireguard-ui
     depends_on:
       - wireguard
-    ports:
-      - "5000:5000"
     cap_add:
       - NET_ADMIN
     network_mode: service:wireguard
